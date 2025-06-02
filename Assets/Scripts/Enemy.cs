@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
     public float enemySpeed = 3.0f;
     private Rigidbody enemyRb;
     private GameObject player;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,5 +20,10 @@ public class Enemy : MonoBehaviour
         Vector3 lookDirection = (player.transform.position - transform.position).normalized;
 
         enemyRb.AddForce(lookDirection * enemySpeed);
+
+        if (transform.position.y < -10)
+        {
+            Destroy(gameObject);
+        }
     }
 }
